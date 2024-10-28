@@ -1,0 +1,6 @@
+@SignalR_Push_Notification_HostAddress = http://localhost:5147
+
+GET {{SignalR_Push_Notification_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
