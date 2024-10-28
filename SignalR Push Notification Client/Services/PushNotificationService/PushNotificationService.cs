@@ -1,5 +1,6 @@
 ﻿using SignalR_Push_Notification_Client.Services.PushNotificationService.Models;
 using Microsoft.AspNetCore.SignalR.Client;
+using SignalR_Push_Notification_Client.Services.PushNotificationService.Internal;
 
 namespace SignalR_Push_Notification_Client.Services.PushNotificationService;
 
@@ -21,7 +22,7 @@ public class PushNotificationService
 
         _hubConnection = new HubConnectionBuilder()
             .WithUrl($"http://{url}:{port}/hub")
-            .WithAutomaticReconnect()
+            .WithAutomaticReconnect(new RetryPolicy())
             .Build();
 
         _hubConnection.On<Notification>("Notify", (notification) =>
